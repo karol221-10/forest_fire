@@ -3,6 +3,7 @@
 #include "APoint.h"
 #include <memory>
 #include <SDL2/SDL.h>
+#include "Tools.h"
 using std::unique_ptr;
 class SDLMain {
 public:
@@ -13,6 +14,7 @@ public:
     void setResolution(int width,int height);
 private:
 	unique_ptr<ForestMap> map;
+	unique_ptr<ATool> tool;
 	SDL_Window *win = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	function<void(int,int,PType)> func;
