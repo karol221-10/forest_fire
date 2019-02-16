@@ -12,7 +12,8 @@ using namespace std;
 enum PType {
     EXIST,
     FIRE,
-    BURN
+    BURN,
+    NONE
 };
 class Coordinates {
     public:
@@ -50,6 +51,7 @@ class Tree {
                 this->type = BURN;
             break;
             case BURN:
+            case NONE:
             break;
         }
         return temp;
@@ -83,6 +85,9 @@ class ForestMap {
     void add(int x,int y,PType status) {
         Tree new_tree(status);
         (*fullMap)[Coordinates(x,y)] = new_tree;
+    }
+    void del(int x,int y) {
+        (*fullMap).erase(Coordinates(x,y));
     }
     void drawAll(function<void(int,int,PType)> func) {
         map<Coordinates,Tree>& mp = *fullMap.get();
